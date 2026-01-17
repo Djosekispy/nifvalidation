@@ -1,0 +1,23 @@
+{
+  "name": "nifvalidation",
+  "version": "1.0.0",
+  "description": "Biblioteca para consulta de NIF de contribuintes em Angola usando Puppeteer.",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [
+    "nif",
+    "angola",
+    "puppeteer",
+    "consulta",
+    "validacao",
+    "minfin"
+  ],
+  "author": "",
+  "license": "ISC",
+  "type": "module",
+  "dependencies": {
+    "puppeteer": "^24.35.0"
+  }
+}
