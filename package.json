@@ -4,7 +4,8 @@
   "description": "Biblioteca para consulta de NIF de contribuintes em Angola usando Puppeteer.",
   "main": "index.js",
   "scripts": {
-    "test": "node --test"
+    "test": "node --test",
+    "run:real": "node scripts/run-real-nif.js"
   },
   "keywords": [
     "nif",
@@ -19,5 +20,8 @@
   "type": "module",
   "dependencies": {
     "puppeteer": "^24.35.0"
+  },
+  "devDependencies": {
+    "dotenv": "^16.4.5"
   }
 }
