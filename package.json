@@ -23,5 +23,10 @@
   },
   "devDependencies": {
     "dotenv": "^16.4.5"
-  }
+  },
+"repository": {
+  "url": "https://github.com/Djosekispy/nifvalidation.git",
+  "directory": "/",
+  "type": "git"
+}
 }
