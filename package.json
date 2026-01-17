@@ -1,6 +1,6 @@
 {
   "name": "nifvalidation",
-  "version": "1.0.0",
+  "version": "1.1.0",
   "description": "Biblioteca para consulta de NIF de contribuintes em Angola usando Puppeteer.",
   "main": "index.js",
   "scripts": {
