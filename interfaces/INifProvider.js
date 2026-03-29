@@ -9,7 +9,6 @@ class INifProvider {
   getLookupUrl() {
     throw new Error("Method getLookupUrl() must be implemented");
   }
-
   /**
    * @param {import("puppeteer").Page} page
    * @param {string} nif
