@@ -1,11 +1,12 @@
 {
-  "name": "nifvalidation",
+  "name": "@djosekispy/nifvalidation",
   "version": "1.2.0",
   "description": "Biblioteca para consulta de NIF/BI de contribuintes em Angola.",
   "main": "index.js",
   "scripts": {
     "test": "node --test",
-    "run:real": "node scripts/run-real-nif.js"
+    "run:real": "node scripts/run-real-nif.js",
+    "publish:github": "npm publish --registry=https://npm.pkg.github.com"
   },
   "keywords": [
     "nif",
@@ -18,15 +19,18 @@
   "author": "",
   "license": "ISC",
   "type": "module",
+  "publishConfig": {
+    "registry": "https://npm.pkg.github.com",
+    "access": "public"
+  },
   "dependencies": {
     "puppeteer": "^24.35.0"
   },
   "devDependencies": {
     "dotenv": "^16.4.5"
   },
-"repository": {
-  "url": "https://github.com/Djosekispy/nifvalidation.git",
-  "directory": "/",
-  "type": "git"
-}
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/Djosekispy/nifvalidation.git"
+  }
 }

@@ -8,14 +8,22 @@ automatizando o acesso ao portal público do contribuinte com Puppeteer.
 
 ### Instalação
 
+Via npmjs:
+
 ```bash
-npm install nifvalidation
+npm install @djosekispy/nifvalidation
 ```
 
 ou
 
 ```bash
-yarn add nifvalidation
+yarn add @djosekispy/nifvalidation
+```
+
+Via GitHub Packages (registry npm do GitHub):
+
+```bash
+npm install @djosekispy/nifvalidation --registry=https://npm.pkg.github.com
 ```
 
 ### Requisitos
@@ -38,7 +46,7 @@ Não armazena nenhum dado em cache por padrão; cada chamada realiza uma nova co
 ### Uso básico (exemplo)
 
 ```js
-import { getNifData } from "nifvalidation";
+import { getNifData } from "@djosekispy/nifvalidation";
 
 async function main() {
   // Exemplo de valor fictício; substitua por um NIF/BI válido no seu contexto
@@ -126,7 +134,7 @@ uma instância de Puppeteer ou configurar proxies) desde que exponha o método
 assíncrono `createPage` que retorne `{ browser, page }`.
 
 ```js
-import { getNifData, PuppeteerBrowser } from "nifvalidation";
+import { getNifData, PuppeteerBrowser } from "@djosekispy/nifvalidation";
 
 class CustomBrowser extends PuppeteerBrowser {
   // aqui você pode sobrescrever createPage ou adicionar configuração extra
@@ -146,4 +154,25 @@ async function main() {
 - Utilize apenas NIFs/BI para os quais você tenha autorização de consulta
 - Evite volumes muito altos de requisições em pouco tempo (risco de bloqueio)
 - Monitore alterações de layout do site: mudanças podem quebrar o scraping
+
+### Publicação no GitHub Packages
+
+Pré-requisitos:
+
+- Repositório no GitHub: `Djosekispy/nifvalidation`
+- Token com permissões para packages (`write:packages`, e se necessário `read:packages`)
+
+1. Autentique o npm no registry do GitHub:
+
+```bash
+npm login --scope=@djosekispy --auth-type=legacy --registry=https://npm.pkg.github.com
+```
+
+2. Publique no GitHub Packages:
+
+```bash
+npm run publish:github
+```
+
+No CI (GitHub Actions), o workflow já publica usando `GITHUB_TOKEN` ao criar release.
 
