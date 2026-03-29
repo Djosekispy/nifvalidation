@@ -71,6 +71,9 @@ jobs:
       - name: Install dependencies
         run: npm install
 
+      - name: Prepare package name for npm
+        run: npm pkg set name=nifvalidation
+
       - name: Publish to npm
         run: npm publish --provenance --access public
         env:
