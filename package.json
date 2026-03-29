@@ -1,6 +1,6 @@
 {
   "name": "@djosekispy/nifvalidation",
-  "version": "2.0.0",
+  "version": "2.0.1",
   "description": "Biblioteca para consulta de NIF/BI de contribuintes em Angola.",
   "main": "index.js",
   "scripts": {
