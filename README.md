@@ -92,6 +92,14 @@ Função de alto nível para consultar os dados de um NIF/BI.
 
 - `nif` **string** – Número de identificação fiscal ou BI (não é validado localmente).
 - `options.browserAdapter` **PuppeteerBrowser (opcional)** – Permite injetar um adaptador de browser personalizado (útil para testes ou ambientes especiais).
+- `options.provider` **INifProvider (opcional)** – Permite trocar a fonte de dados mantendo o mesmo contrato.
+- `options.retries` **number (opcional)** – Quantidade de retries em falhas temporárias (padrão: `2`).
+- `options.timeoutMs` **number (opcional)** – Timeout de carregamento da página (padrão: `60000`).
+- `options.resultTimeoutMs` **number (opcional)** – Timeout para aguardar painel de resultado (padrão: `10000`).
+- `options.enableCache` **boolean (opcional)** – Ativa cache em memória por NIF.
+- `options.cacheTtlMs` **number (opcional)** – TTL do cache em ms (padrão: `300000`).
+- `options.debug` **boolean (opcional)** – Ativa logs internos de debug/retry.
+- `options.logger` **objeto (opcional)** – Logger customizado com funções `debug`, `warn`, `error`.
 
 Retorna uma `Promise` que resolve para uma instância de `NifEntity`, com as propriedades:
 
@@ -108,6 +116,9 @@ Classe de serviço responsável por coordenar o fluxo de consulta no portal do c
 
 - Usa internamente um adaptador de browser que implemente o método `createPage`
 - Encapsula a navegação, preenchimento de formulário e extração de dados
+- Inclui retry com backoff simples para falhas temporárias
+- Inclui validação avançada da resposta extraída
+- Suporta cache opcional em memória para consultas repetidas
 
 #### `PuppeteerBrowser`
 
@@ -115,6 +126,12 @@ Adaptador padrão de browser usando `puppeteer`.
 
 - Cria uma nova instância de navegador e página
 - Habilita interceptação de requests para bloquear recursos desnecessários (imagens, fontes, etc.)
+
+#### `INifProvider` e `PortalContribuinteProvider`
+
+- `INifProvider` define a interface para criação de novos provedores
+- `PortalContribuinteProvider` é o provedor padrão para o portal do contribuinte
+- Essa arquitetura permite evoluir para múltiplas fontes de consulta sem quebrar API pública
 
 #### `NifEntity`
 
@@ -147,6 +164,32 @@ async function main() {
 
   console.log(data);
 }
+```
+
+### Exemplo avançado: cache + retries + logs
+
+```js
+import { getNifData } from "@djosekispy/nifvalidation";
+
+const data = await getNifData("0000000000000", {
+  retries: 3,
+  timeoutMs: 60000,
+  resultTimeoutMs: 12000,
+  enableCache: true,
+  cacheTtlMs: 5 * 60 * 1000,
+  debug: true,
+});
+
+console.log(data);
+```
+
+### Qualidade e testes
+
+```bash
+npm test
+npm run test:coverage
+npm run lint
+npm run format:check
 ```
 
 ### Boas práticas de uso

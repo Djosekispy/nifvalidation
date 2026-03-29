@@ -8,7 +8,7 @@ class INif {
    * @param {string} nif
    * @returns {Promise<any>}
    */
-  async getNIF(nif) {
+  async getNIF(_nif) {
     throw new Error("Method getNIF() must be implemented");
   }
 }
