@@ -11,13 +11,13 @@ automatizando o acesso ao portal público do contribuinte com Puppeteer.
 Via npmjs:
 
 ```bash
-npm install @djosekispy/nifvalidation
+npm install nifvalidation
 ```
 
 ou
 
 ```bash
-yarn add @djosekispy/nifvalidation
+yarn addnifvalidation
 ```
 
 Via GitHub Packages (registry npm do GitHub):
@@ -46,7 +46,7 @@ Não armazena nenhum dado em cache por padrão; cada chamada realiza uma nova co
 ### Uso básico (exemplo)
 
 ```js
-import { getNifData } from "@djosekispy/nifvalidation";
+import { getNifData } from "nifvalidation";
 
 async function main() {
   // Exemplo de valor fictício; substitua por um NIF/BI válido no seu contexto
